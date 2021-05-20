@@ -142,7 +142,7 @@ def load_embedding_model():
     """
     import gensim.downloader as api
     wv_from_bin = api.load("glove-wiki-gigaword-200")
-    print("Loaded vocab size %i" % len(wv_from_bin.vocab.keys()))
+    # print("Loaded vocab size %i" % len(wv_from_bin.vocab.keys()))
     return wv_from_bin
 
 
@@ -213,7 +213,9 @@ if __name__ == "__main__":
     # plot_embeddings(M_reduced_normalized, word2ind, words)
 
     # find polysemes and homonyms
-    pprint.pprint(wv_from_bin.most_similar(positive=['russia', 'u.s.a.'], negative=['france']))
+    print(wv_from_bin.most_similar(positive=['child', 'lamb'], negative=['adult']))
 
+    print(wv_from_bin.most_similar(positive=['woman', 'worker'], negative=['man']))
+    print(wv_from_bin.most_similar(positive=['man', 'worker'], negative=['woman']))
 
 

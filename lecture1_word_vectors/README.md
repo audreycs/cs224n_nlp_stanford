@@ -94,11 +94,16 @@ print(wv_from_bin.distance('smart', 'stupid'))
 
 - Analogies with Word Vectors:
 ```
-pprint.pprint(wv_from_bin.most_similar(positive=['apple', 'Samsung'], negative=['china']))
+pprint.pprint(wv_from_bin.most_similar(positive=['child', 'lamb'], negative=['adult']))
 ```
-> 
+> [('cook', 0.4536786675453186), ('grilled', 0.4504958987236023), ('graham', 0.43271440267562866), ('onions', 0.4288058876991272), ('chicken', 0.42287036776542664), ('daughter', 0.42270931601524353), ('pork', 0.4148535132408142), ('son', 0.40863850712776184), ('veal', 0.4085983335971832), ('mother', 0.408262699842453)]
 
-Analogies:
-```
 
+Bias:
 ```
+pprint.pprint(wv_from_bin.most_similar(positive=['woman', 'worker'], negative=['man']))
+print()
+pprint.pprint(wv_from_bin.most_similar(positive=['man', 'worker'], negative=['woman']))
+```
+> [('employee', 0.6375863552093506), ('workers', 0.6068920493125916), ('nurse', 0.5837947130203247), ('pregnant', 0.5363885164260864), ('mother', 0.5321308970451355), ('employer', 0.5127025842666626), ('teacher', 0.5099576711654663), ('child', 0.5096741318702698), ('homemaker', 0.5019454956054688), ('nurses', 0.4970572590827942)]  
+[('workers', 0.611325740814209), ('employee', 0.5983108878135681), ('working', 0.5615329742431641), ('laborer', 0.5442320108413696), ('unemployed', 0.536851704120636), ('job', 0.5278826355934143), ('work', 0.5223963856697083), ('mechanic', 0.5088937282562256), ('worked', 0.5054520964622498), ('factory', 0.4940454363822937)]
