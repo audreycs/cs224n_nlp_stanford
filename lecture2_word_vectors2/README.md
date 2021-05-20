@@ -22,9 +22,9 @@ Two main model variants:
 Additional efficiency in training: Negative samples. Adding negative samples into the objective function and advance experimental performance. The objective function aims to minimalize the score of positive samples and maximize the score of negative samples.
 
 An important mathmetical activiate functions been used: Sigmod function:
-<img src="pics/pic1.jpg"
+<img src="pics/pic1.svg"
      style="align: center"
-     width="150" />
+     width="100" />
 
 Word2vec used the 3/4 power on distribution frequency to smooth the distribution probability.
 
