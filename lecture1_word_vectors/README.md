@@ -66,7 +66,7 @@ For the graphic result in Part2:
 
 Analysis: Relative position of these words are very the same. Ecuador and Iraq converge more closely, and keep a bigger distance away from kuwait, even though kuwait and Iraq are geographically more close.
 
-Polyseme I found:
+- Polyseme:
 ```
 print(wv_from_bin.most_similar('mouse'))
 ```
@@ -84,10 +84,21 @@ wv_from_bin.most_similar('nearly')
 
 'nearly' and 'almost' have more than 0.8 similarity. -->
 
-Synonyms & Antonyms:
+- Synonyms & Antonyms:
 ```
 print(wv_from_bin.distance('clever', 'stupid'))
 print(wv_from_bin.distance('smart', 'stupid'))
 ```
 > 0.4781627058982849  
 0.517957866191864
+
+- Analogies with Word Vectors:
+```
+pprint.pprint(wv_from_bin.most_similar(positive=['apple', 'Samsung'], negative=['china']))
+```
+> 
+
+Analogies:
+```
+
+```
