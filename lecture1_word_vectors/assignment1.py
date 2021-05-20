@@ -188,29 +188,29 @@ def get_matrix_of_vectors(wv_from_bin, required_words=['barrels', 'bpd', 'ecuado
 
 if __name__ == "__main__":
     '''for part1'''
-    # reuters_corpus = read_corpus()
-    # M_co_occurrence, word2ind_co_occurrence = compute_co_occurrence_matrix(reuters_corpus)
-    # M_reduced_co_occurrence = reduce_to_k_dim(M_co_occurrence, k=2)
-    #
-    # # Rescale (normalize) the rows to make them each of unit-length
-    # M_lengths = np.linalg.norm(M_reduced_co_occurrence, axis=1)
-    # M_normalized = M_reduced_co_occurrence / M_lengths[:, np.newaxis]  # broadcasting
-    #
-    # words = ['barrels', 'bpd', 'ecuador', 'energy', 'industry', 'kuwait', 'oil', 'output', 'petroleum', 'iraq']
-    #
-    # plot_embeddings(M_normalized, word2ind_co_occurrence, words)
+    reuters_corpus = read_corpus()
+    M_co_occurrence, word2ind_co_occurrence = compute_co_occurrence_matrix(reuters_corpus)
+    M_reduced_co_occurrence = reduce_to_k_dim(M_co_occurrence, k=2)
+
+    # Rescale (normalize) the rows to make them each of unit-length
+    M_lengths = np.linalg.norm(M_reduced_co_occurrence, axis=1)
+    M_normalized = M_reduced_co_occurrence / M_lengths[:, np.newaxis]  # broadcasting
+
+    words = ['barrels', 'bpd', 'ecuador', 'energy', 'industry', 'kuwait', 'oil', 'output', 'petroleum', 'iraq']
+
+    plot_embeddings(M_normalized, word2ind_co_occurrence, words)
 
     '''for part2'''
     wv_from_bin = load_embedding_model()
-    # M, word2ind = get_matrix_of_vectors(wv_from_bin)
-    # M_reduced = reduce_to_k_dim(M, k=2)
-    #
-    # # Rescale (normalize) the rows to make them each of unit-length
-    # M_lengths = np.linalg.norm(M_reduced, axis=1)
-    # M_reduced_normalized = M_reduced / M_lengths[:, np.newaxis]  # broadcasting
-    #
-    # words = ['barrels', 'bpd', 'ecuador', 'energy', 'industry', 'kuwait', 'oil', 'output', 'petroleum', 'iraq']
-    # plot_embeddings(M_reduced_normalized, word2ind, words)
+    M, word2ind = get_matrix_of_vectors(wv_from_bin)
+    M_reduced = reduce_to_k_dim(M, k=2)
+
+    # Rescale (normalize) the rows to make them each of unit-length
+    M_lengths = np.linalg.norm(M_reduced, axis=1)
+    M_reduced_normalized = M_reduced / M_lengths[:, np.newaxis]  # broadcasting
+
+    words = ['barrels', 'bpd', 'ecuador', 'energy', 'industry', 'kuwait', 'oil', 'output', 'petroleum', 'iraq']
+    plot_embeddings(M_reduced_normalized, word2ind, words)
 
     # find polysemes and homonyms
     print(wv_from_bin.most_similar(positive=['child', 'lamb'], negative=['adult']))
