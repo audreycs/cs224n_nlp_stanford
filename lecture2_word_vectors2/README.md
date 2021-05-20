@@ -6,7 +6,7 @@ This lecture mainly talks about :
 - Word vectors evaluation
 
 ## Gradient Descent
-Empricially we usually use stochastic gradient descent for optimazation. Two main advantages of stochastic gradient descent compared to one-sample gradient descent:
+Empricially we usually use stochastic gradient descent for optimazation. Two main advantages of mini-batch stochastic gradient descent compared to one-sample gradient descent:
 1. Sampling a batch of training data can make the optimazation process smoother.
 2. Fasten the optimazation process.
 
