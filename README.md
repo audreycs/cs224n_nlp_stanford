@@ -1,5 +1,5 @@
 # cs224n_nlp_stanford
-Natural Language Processing with Deep Learning Course (2021)
+Natural Language Processing (NLP) with Deep Learning Course (2021) of Standford
 
 - Course mainpage: [CS224n](http://web.stanford.edu/class/cs224n/)
 
