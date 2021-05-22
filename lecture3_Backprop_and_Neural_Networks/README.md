@@ -28,7 +28,7 @@ case 1
 
 <img src="pics/pic3.jpg"
      style="align: center"
-     width="500" />
+     width="450" />
 
 case 2
 
