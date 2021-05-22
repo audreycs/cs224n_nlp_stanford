@@ -1,7 +1,8 @@
 \documentclass{article}
-\usepackage{amsmath}
+\usepackage{amsmath,amsfonts,amssymb}
 \usepackage[a4paper, total={6in, 8in}]{geometry}
 \usepackage[parfill]{parskip}
+\usepackage{autobreak}
 
 \begin{document}
 
@@ -19,6 +20,144 @@
 
 (b). 
 
+\begin{equation*}
+  \begin{aligned}
+    \frac{\partial \boldsymbol{J}}{\partial \boldsymbol{v}_c} &= \frac{\partial (- \log (\hat{y}_o))}{\partial \boldsymbol{v}_c} \\ 
+    & = - \frac{\partial (\log \frac{\exp (\boldsymbol{u}_{o}^{\intercal} \boldsymbol{v}_{c})}{\sum_{w \in Vocab} \exp (\boldsymbol{u}_{w}^{\intercal}\boldsymbol{v}_{c})})}{\partial \boldsymbol{v}_c} \\ 
+    & = - \frac{\partial (\boldsymbol{u}_{o}^{\intercal} \boldsymbol{v}_{c}) - \partial (\log \sum_{w \in Vocab} \exp (\boldsymbol{u}_{w}^{\intercal}\boldsymbol{v}_{c}) )}{\partial \boldsymbol{v}_c} \\ 
+    & = - \boldsymbol{u}_{o} + \frac{1}{\sum_{w \in Vocab} \exp (\boldsymbol{u}_{w}^{\intercal}\boldsymbol{v}_{c}) } \cdot \sum_{w \in Vocab} \boldsymbol{u}_{w} \exp (\boldsymbol{u}_{w}^{\intercal}\boldsymbol{v}_{c}) \\
+    & = - \boldsymbol{u}_{o} + \sum_{w \in Vocab}\frac{\exp (\boldsymbol{u}_{w}^{\intercal}\boldsymbol{v}_{c})}{\sum_{k \in Vocab} \exp (\boldsymbol{u}_{k}^{\intercal}\boldsymbol{v}_{c})} \cdot \boldsymbol{u}_{w} \\
+    & = - \boldsymbol{u}_{o} + \sum_{w \in Vocab} p(\boldsymbol{u}_{w}|\boldsymbol{v}_{c}) \cdot \boldsymbol{u}_{w} \\
+    & = - \boldsymbol{u}_{o} + \sum_{w \in Vocab} \hat{y}_{w} \boldsymbol{u}_{w} \\
+    & = - \boldsymbol{u}_{o} + \boldsymbol{U}\hat{\boldsymbol{y}} \\
+    & = - \boldsymbol{U}\boldsymbol{y} + \boldsymbol{U}\hat{\boldsymbol{y}} \\
+    & = \boldsymbol{U} (\hat{\boldsymbol{y}} - \boldsymbol{y})
+  \end{aligned}
+\end{equation*}
 
+~\\
+
+(c). 
+
+case1: $w \neq o$: 
+
+\begin{equation*}
+  \begin{aligned}
+    \frac{\partial \boldsymbol{J}}{\partial \boldsymbol{u}_w} &= \frac{\partial (- \log (\hat{y}_o))}{\partial \boldsymbol{u}_w} \\ 
+    & = - \frac{\partial (\log \frac{\exp (\boldsymbol{u}_{o}^{\intercal} \boldsymbol{v}_{c})}{\sum_{w \in Vocab} \exp (\boldsymbol{u}_{w}^{\intercal}\boldsymbol{v}_{c})})}{\partial \boldsymbol{u}_w} \\ 
+    & = - \frac{\partial (\boldsymbol{u}_{o}^{\intercal} \boldsymbol{v}_{c}) - \partial (\log \sum_{k \in Vocab} \exp (\boldsymbol{u}_{k}^{\intercal}\boldsymbol{v}_{c}) )}{\partial \boldsymbol{u}_w} \\ 
+    & = \frac{1}{\sum_{k \in Vocab} \exp (\boldsymbol{u}_{k}^{\intercal}\boldsymbol{v}_{c})} \cdot \boldsymbol{v}_c \exp (\boldsymbol{u}_{w}^{\intercal}\boldsymbol{v}_{c}) \\
+    & = \boldsymbol{v}_c \cdot p(\boldsymbol{u}_{w} | \boldsymbol{v}_c) \\ 
+    & = \boldsymbol{v}_c \cdot \hat{y}_w
+  \end{aligned}
+\end{equation*}
+
+case 2: $w = o$: 
+
+\begin{equation*}
+  \begin{aligned}
+    \frac{\partial \boldsymbol{J}}{\partial \boldsymbol{u}_w} &= \frac{\partial (- \log (\hat{y}_o))}{\partial \boldsymbol{u}_o} \\ 
+    & = - \frac{\partial (\log \frac{\exp (\boldsymbol{u}_{o}^{\intercal} \boldsymbol{v}_{c})}{\sum_{w \in Vocab} \exp (\boldsymbol{u}_{w}^{\intercal}\boldsymbol{v}_{c})})}{\partial \boldsymbol{u}_o} \\ 
+    & = - \frac{\partial (\boldsymbol{u}_{o}^{\intercal} \boldsymbol{v}_{c}) - \partial (\log \sum_{k \in Vocab} \exp (\boldsymbol{u}_{k}^{\intercal}\boldsymbol{v}_{c}) )}{\partial \boldsymbol{u}_o} \\ 
+    & = - \boldsymbol{v}_c + \frac{1}{\sum_{k \in Vocab} \exp (\boldsymbol{u}_{k}^{\intercal}\boldsymbol{v}_{c})} \cdot \boldsymbol{v}_c \exp (\boldsymbol{u}_{o}^{\intercal}\boldsymbol{v}_{c}) \\ 
+    & = \boldsymbol{v}_c \left( p(\boldsymbol{u}_o | \boldsymbol{v}_c) -1 \right) \\
+    & = \boldsymbol{v}_c \cdot (\hat{y}_o - 1)
+  \end{aligned}
+\end{equation*}
+
+~\\
+
+(d).
+
+\begin{equation*}
+  \begin{aligned}
+    \frac{\partial \boldsymbol{J}}{\partial \boldsymbol{U}} &= \left[\frac{\partial \boldsymbol{J}}{\partial \boldsymbol{u}_1}, \frac{\partial \boldsymbol{J}}{\partial \boldsymbol{u}_2}, \frac{\partial \boldsymbol{J}}{\partial \boldsymbol{u}_3}, ... , \frac{\partial \boldsymbol{J}}{\partial \boldsymbol{u}_{|Vocab|}} \right] \\ 
+  \end{aligned}
+\end{equation*}
+
+~\\ 
+
+(e). 
+
+\begin{equation*}
+  \begin{aligned}
+    \frac{\partial \sigma (x)}{\partial x} &= \frac{\partial (\frac{e^x}{e^x + 1})}{\partial x} \\ 
+    & = \frac{(e^x)'(e^x+1) - e^x(e^x+1)'}{(e^x + 1)^2} \\ 
+    & = \frac{e^x(e^x +1) - (e^x)^2}{(e^x + 1)^2} \\
+    & = \sigma (x) - \sigma(x)^2
+  \end{aligned}
+\end{equation*}
+
+~\\
+
+(f). 
+
+\begin{equation*}
+  \begin{aligned}
+    \frac{\partial \boldsymbol{J}}{\partial \boldsymbol{v}_c} &= \frac{\partial (-\log \left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)\right)-\sum_{k=1}^{K} \log \left(\sigma\left(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right)\right))}{\partial \boldsymbol{v}_c} \\ 
+    & = \frac{\partial}{\partial \boldsymbol{v}_c} \left[- \log (\sigma(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}))\right] - \frac{\partial}{\partial \boldsymbol{v}_c}\left[\sum_{k=1}^{K} \log (\sigma(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}))\right] \\
+    & = \left[- \frac{1}{\sigma(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c})} \left(\sigma(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}) - \sigma(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c})^2\right) \boldsymbol{u}_{o}\right] -  \\ &  \left[\sum_{k=1}^{K} \frac{1}{\sigma(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c})} \left(\sigma(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}) - \sigma(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c})^2\right)(-\boldsymbol{u}_{k})\right] \\ 
+    & = - \boldsymbol{u}_{o} \left(1-\sigma(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c})\right) + \sum_{k=1}^{K}\boldsymbol{u}_{k}\left(1-\sigma(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c})\right)
+  \end{aligned}
+\end{equation*}
+
+~\\
+
+\begin{equation*}
+  \begin{aligned}
+    \frac{\partial \boldsymbol{J}}{\partial \boldsymbol{u}_o} &= \frac{\partial (-\log \left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)\right)-\sum_{k=1}^{K} \log \left(\sigma\left(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right)\right))}{\partial \boldsymbol{u}_o} \\ 
+    & = \frac{\partial}{\partial \boldsymbol{u}_o} \left[- \log (\sigma(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}))\right] - \frac{\partial}{\partial \boldsymbol{u}_o}\left[\sum_{k=1}^{K} \log (\sigma(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}))\right] \\
+    & = \left[- \frac{1}{\sigma(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c})} \left(\sigma(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}) - \sigma(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c})^2\right) \boldsymbol{v}_{c}\right] - 0 \\ 
+    & = - \boldsymbol{v}_{c} \left(1-\sigma(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c})\right) 
+  \end{aligned}
+\end{equation*}
+
+~\\
+
+\begin{equation*}
+  \begin{aligned}
+    \frac{\partial \boldsymbol{J}}{\partial \boldsymbol{u}_k} &= \frac{\partial (-\log \left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)\right)-\sum_{k=1}^{K} \log \left(\sigma\left(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right)\right))}{\partial \boldsymbol{u}_k} \\ 
+    & = \frac{\partial}{\partial \boldsymbol{u}_k} \left[- \log (\sigma(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}))\right] - \frac{\partial}{\partial \boldsymbol{u}_k}\left[\sum_{t=1}^{K} \log (\sigma(-\boldsymbol{u}_{t}^{\top} \boldsymbol{v}_{c}))\right] \\
+    & = 0 - \left[\frac{1}{\sigma(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c})} \left(\sigma(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}) - \sigma(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c})^2\right)(-\boldsymbol{v}_{c})\right] \\ 
+    & = \boldsymbol{v}_{c}\left(1-\sigma(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c})\right)
+  \end{aligned}
+\end{equation*}
+
+~\\
+
+(g).
+
+\begin{equation*}
+  \begin{aligned}
+    \frac{\partial \boldsymbol{J}}{\partial \boldsymbol{u}_k} &= \frac{\partial (-\log \left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)\right)-\sum_{k=1}^{K} \log \left(\sigma\left(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right)\right))}{\partial \boldsymbol{u}_k} \\ 
+    & = \frac{\partial}{\partial \boldsymbol{u}_k} \left[- \log (\sigma(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}))\right] - \frac{\partial}{\partial \boldsymbol{u}_k}\left[\sum_{t=1}^{K} \log (\sigma(-\boldsymbol{u}_{t}^{\top} \boldsymbol{v}_{c}))\right] \\
+    & = 0 - \left[\sum_{\boldsymbol{u}_t = \boldsymbol{u}_k}\frac{1}{\sigma(-\boldsymbol{u}_{t}^{\top} \boldsymbol{v}_{c})} \left(\sigma(-\boldsymbol{u}_{t}^{\top} \boldsymbol{v}_{c}) - \sigma(-\boldsymbol{u}_{t}^{\top} \boldsymbol{v}_{c})^2\right)(-\boldsymbol{v}_{c})\right] \\ 
+    & = \sum_{\boldsymbol{u}_t = \boldsymbol{u}_k}\boldsymbol{v}_{c}\left(1-\sigma(-\boldsymbol{u}_{t}^{\top} \boldsymbol{v}_{c})\right)
+  \end{aligned}
+\end{equation*}
+
+~\\
+
+(h). 
+
+\begin{equation*}
+  \begin{aligned}
+    \partial \boldsymbol{J}_{\text {skip-gram }}\left(\boldsymbol{v}_{c}, w_{t-m}, \ldots w_{t+m}, \boldsymbol{U}\right) / \partial \boldsymbol{U} &= \sum_{\substack{-m \leq j \leq m \\ j \neq 0}} \partial \boldsymbol{J}_{\text {skip-gram }}\left(\boldsymbol{v}_{c}, w_{t+j}, \boldsymbol{U}\right) / \partial \boldsymbol{U}
+  \end{aligned}
+\end{equation*}
+
+\begin{equation*}
+  \begin{aligned}
+    \partial \boldsymbol{J}_{\text {skip-gram }}\left(\boldsymbol{v}_{c}, w_{t-m}, \ldots w_{t+m}, \boldsymbol{U}\right) / \partial \boldsymbol{v}_c &= \sum_{\substack{-m \leq j \leq m \\ j \neq 0}} \partial \boldsymbol{J}_{\text {skip-gram }}\left(\boldsymbol{v}_{c}, w_{t+j}, \boldsymbol{U}\right) / \partial \boldsymbol{v}_c
+  \end{aligned}
+\end{equation*}
+
+$w \neq c$ :
+
+\begin{equation*}
+  \begin{aligned}
+    \partial \boldsymbol{J}_{\text {skip-gram }}\left(\boldsymbol{v}_{c}, w_{t-m}, \ldots w_{t+m}, \boldsymbol{U}\right) / \partial \boldsymbol{v}_w &= \sum_{\substack{-m \leq j \leq m \\ j \neq 0}} \partial \boldsymbol{J}_{\text {skip-gram }}\left(\boldsymbol{v}_{c}, w_{t+j}, \boldsymbol{U}\right) / \partial \boldsymbol{v}_w
+  \end{aligned}
+\end{equation*}
 
 \end{document}
