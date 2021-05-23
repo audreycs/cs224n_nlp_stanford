@@ -73,3 +73,15 @@ case 2
 <img src="pics/pic11.jpg"
      style="align: center"
      width="700" />
+
+
+## Assignment 2 (Coding Part)
+
+The code implementation is uploaded to the directory `code/`.
+
+For the final show time, the result is:
+
+<img src="pics/pic13.png"
+     style="align: center"
+     width="500" />
+
