@@ -66,7 +66,7 @@ Remaining problems:
 
 ## RNNs
 
-RNNs can take sentences with any length in!
+**RNNs can take sentences with any length in and apply the same weights on each step!**
 
 <img src="pics/2.jpg"
      style="align: center"
@@ -87,3 +87,56 @@ RNNs disadvantages:
 ### Traning RNNs
 
 calculate cross-entropy probability for evry step t.
+
+<img src="pics/3.png"
+     style="align: center"
+     width="500" />
+
+Note that computing loss and gradients across entire corpus is too expensive. We usually compute loss on sentences.
+
+<br />
+
+### Backpropagation for RNNs
+
+**The gradient w.r.t. a repeated weight is the sum of the gradient w.r.t. each time it appears**
+
+<img src="pics/5.png"
+     style="align: center"
+     width="600" />
+
+<img src="pics/4.png"
+     style="align: center"
+     width="200" />
+
+Backpropagate over timesteps i=t,...,0, summing gradients as you go. This algorithm is called “**backpropagation through time**”
+
+<br />
+
+## Evaluating Language Models
+
+The standard evaluation metricfor Language Models is **perplexity**.
+
+<img src="pics/6.png"
+     style="align: center"
+     width="500" />
+
+> lower perplexity is better!
+
+<br />
+
+### RNNs' perplexity
+
+RNNs have many complex variants, which improved performance. (lower perplexity)
+
+<img src="pics/7.png"
+     style="align: center"
+     width="600" />
+
+<br />
+
+## Applications for RNNs
+
+1. Be used for tagging.
+2. Sentence classification.
+3. Be used as an encoder module.
+4. Generate text.
