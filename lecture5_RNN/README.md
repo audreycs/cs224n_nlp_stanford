@@ -140,3 +140,77 @@ RNNs have many complex variants, which improved performance. (lower perplexity)
 2. Sentence classification.
 3. Be used as an encoder module.
 4. Generate text.
+
+<br />
+
+---
+
+# Assignment 3
+
+## 1. Adam Optimizer
+
+i. The momentum term increases for dimensions whose gradients point in the same directions and reduces updates for dimensions whose gradients change directions. (Look into this [Post](https://ruder.io/optimizing-gradient-descent/))
+
+ii. The parameters which have smaller rolling average of the magnitudes of the gradients will  get  larger  update.
+
+If the weights decay really slowly (where the v is small), then the learning rates will increase. If the weights decay fast (where the v is big), then the learning rates will decline.
+
+<br />
+
+## 2. Dropout
+
+i. 
+
+<img src="pics/8.png"
+     style="align: center"
+     width="100" />
+
+Proof:
+
+<img src="pics/9.png"
+     style="align: center"
+     width="300" />
+
+<img src="pics/10.png"
+     style="align: center"
+     width="500" />
+
+ii. Simplest reason can be, during prediction(test, validation or after production deployment) you want to use the capability of each and every learned neurons and really don't like to skip some of them randomly.
+
+<br />
+
+## 3. Dependency Parsing
+
+(a).
+
+<img src="pics/3.jpg"
+     style="align: center"
+     width="800" />
+
+<br />
+
+(b).
+
+It needs 2 * n steps to parse. Because we need n steps of LEFT-ARC and n steps of RIGHT-ARC.
+
+<br />
+
+(c), (d) and (e) are in the .py files.
+
+Last result:
+```text
+================================================================================
+TESTING
+================================================================================
+Restoring the best model weights found on the dev set
+Final evaluation on test set
+  0%|          | 0/2416 [00:00<?, ?it/s]- test UAS: 85.72
+2919736it [00:00, 91391366.91it/s]      
+Done!
+```
+
+
+
+
+
+
