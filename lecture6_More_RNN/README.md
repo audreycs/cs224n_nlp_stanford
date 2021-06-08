@@ -1,6 +1,6 @@
 # Lecture 6: Vanishing Gradients, Fancy RNNs, Seq2Seq
 
-This lecture introduces three models: 
+This lecture introduces three RNN varients: 
 - LSTMs
 - Bidirectional RNNs
 - Multilayer RNNs
