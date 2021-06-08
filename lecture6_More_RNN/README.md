@@ -106,7 +106,7 @@ No! It can be a problem for all neural architectures (including feed-forwardand 
 
 <img src="pics/8.jpg"
      style="align: center"
-     width="500" />
+     width="600" />
 
 2. Multi-layer RNNs
 
