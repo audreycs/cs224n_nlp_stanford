@@ -10,13 +10,17 @@
 
 ### Why is vanishing gradient a problem?
 
-> Gradient signal from far away is lost because it’s much smaller than gradient signal from close-by. So, model weights are updated only with respect to near effects, not long-term effects.
+```text
+Gradient signal from far away is lost because it’s much smaller than gradient signal from close-by. So, model weights are updated only with respect to near effects, not long-term effects.
+```
 
 <img src="pics/2.jpg"
      style="align: center"
      width="600" />
 
-> Another explanatino: Gradient can be viewed as a measure of the effect of the past on the future.
+```text
+Another explanatino: Gradient can be viewed as a measure of the effect of the past on the future.
+```
 
 Due to vanishing gradient, RNN-LMs are better at learning from **sequential recency** than **syntactic recency**, so they make this type of error more often than we'd like.
 
@@ -66,3 +70,24 @@ A overlook of LSTMs:
      style="align: center"
      width="600" />
 
+### How does LSTM solve vanishing gradients?
+
+```text
+The LSTM architecture makes it easierfor the RNN to preserve information over many timesteps
+```
+
+In 2013–2015: LSTMs became the dominant approach for most NLP tasks!
+
+Now (2021),other approaches (e.g., Transformers) have become dominant for many tasks
+
+### Is vanishing/exploding gradient just a RNN problem?
+
+No! It can be a problem for all neural architectures (including feed-forwardand convolutional), especially very deep ones.
+
+**Solution**: lots of new deep feedforward/convolutional architectures that add more direct connections(thus allowing the gradient to flow).
+
+<img src="pics/7.jpg"
+     style="align: center"
+     width="300" />
+
+**Conclusion**: Though vanishing/exploding gradients are a general problem, RNNs are particularly unstable due to the repeated multiplication by the same weight matrix.
