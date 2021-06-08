@@ -103,6 +103,7 @@ No! It can be a problem for all neural architectures (including feed-forwardand 
 ## Bidirectional and Multi-layer RNNs: motivation
 
 1. Bidirectional RNNs
+
 <img src="pics/8.jpg"
      style="align: center"
      width="500" />
