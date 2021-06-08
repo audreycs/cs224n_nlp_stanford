@@ -1,6 +1,6 @@
 # Lecture 6: Vanishing Gradients, Fancy RNNs, Seq2Seq
 
-## Key Notes
+## Vanishing gradient
 
 **Vanishing gradient problem**: When these are small, the gradient signal gets smaller and smaller as it backpropagates further.
 
@@ -18,10 +18,7 @@
 
 > Another explanatino: Gradient can be viewed as a measure of the effect of the past on the future.
 
-
 Due to vanishing gradient, RNN-LMs are better at learning from **sequential recency** than **syntactic recency**, so they make this type of error more often than we'd like.
-
-<br />
 
 ### Why is exploding gradient a problem?
 
@@ -36,4 +33,36 @@ This can cause bad updates:we take too large a step and reach a weird and bad pa
 
 In the worst case, this will result in Infor NaNin your network.
 
+### How to fix the vanishing gradient problem?
+
+The main problem is that **it’s too difficult for the RNN to learn to preserve information over many timesteps.**
+
+> How about a RNN with separate memory?
+
 <br />
+
+## Long Short-Term Memory RNNs (LSTMs)
+
+Key information of LSTMs:
+
+<img src="pics/5.jpg"
+     style="align: center"
+     width="400" />
+
+A overlook of LSTMs:
+
+<img src="pics/4.jpg"
+     style="align: center"
+     width="600" />
+
+1. Forget gate: controls what is kept vs forgotten, from previous cell state.
+2. Input gate: controls what parts of the new cell content are written to cell.
+3. Output gate: controls what parts of cell are output to hidden state.
+4. New cell content: this is the new content to be written to the cell.
+5. Cell state: erase (“forget”) some content from last cell state, and write (“input”) some new cell content.
+6. Hidden state: read (“output”) some content from the cell.
+
+<img src="pics/6.jpg"
+     style="align: center"
+     width="600" />
+
