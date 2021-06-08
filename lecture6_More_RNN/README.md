@@ -1,5 +1,11 @@
 # Lecture 6: Vanishing Gradients, Fancy RNNs, Seq2Seq
 
+This lecture introduces three models: 
+- LSTMs
+- Bidirectional RNNs
+- Multilayer RNNs
+
+
 ## Vanishing gradient
 
 **Vanishing gradient problem**: When these are small, the gradient signal gets smaller and smaller as it backpropagates further.
@@ -91,3 +97,21 @@ No! It can be a problem for all neural architectures (including feed-forwardand 
      width="300" />
 
 **Conclusion**: Though vanishing/exploding gradients are a general problem, RNNs are particularly unstable due to the repeated multiplication by the same weight matrix.
+
+<br />
+
+## Bidirectional and Multi-layer RNNs: motivation
+
+1. Bidirectional RNNs
+<img src="pics/8.jpg"
+     style="align: center"
+     width="600" />
+
+2. Multi-layer RNNs
+
+This allows the network to compute more complex representations.
+
+**Multi-layer RNNs** are also called **stacked RNNs**.
+<img src="pics/9.jpg"
+     style="align: center"
+     width="600" />
