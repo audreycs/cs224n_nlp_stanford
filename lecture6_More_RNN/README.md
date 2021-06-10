@@ -113,6 +113,7 @@ No! It can be a problem for all neural architectures (including feed-forwardand 
 This allows the network to compute more complex representations.
 
 **Multi-layer RNNs** are also called **stacked RNNs**.
+
 <img src="pics/9.jpg"
      style="align: center"
      width="600" />
