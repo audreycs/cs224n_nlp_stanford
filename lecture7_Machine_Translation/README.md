@@ -159,3 +159,40 @@ Sequence-to-sequence with attention:
      width="600" />
 
 
+<br />
+
+
+# Assignment 4
+
+## 1. Coding Part: Neural Machine Translation with RNNs
+
+codes are in file `./a4/`.
+
+(written) Explain one advantage and one disadvantage of dot product attention compared to multiplicative attention:
+
+> Dot product attention is computationally easy and directly, the disadvantage is too easy to get the true informations. Multiplicative attention seems like a transition between dot product and additive attention.
+
+(written) Explain one advantage and one disadvantage ofadditive attentioncompared to mul-tiplicative attention:
+
+> The disadvantage of additive attention is that we need more hyperparameters to be tuned. But it can fit more complex situation and in experiment the additive attention always outperform the two others.
+
+## 2. Analyzing NMT Systems
+
+Why might it be important to model our Cherokee-to-English NMT problem at the subword-level vs. the whole word-level? (Hint:  Cherokee is a polysynthetic language.)
+
+> Using word-level tokens leads to very large vocabulary sizes, especially for morphologically rich languages, where the number of surface forms per lemma is high. Large token vocabularies are impractical for the current neural architectures and hardware. Also normally word-level leads to degradation of translation quality.
+
+Showing case: character-level and subword embeddings are often smaller than whole word embeddings
+
+> Sentence: 'Bigger, faster, stronger, wiser, ...(more than 25 distinct adj.), taller and healthier are the comparatives of big, faster, wise, ..., tall and health.'
+
+How  does  multilingual  training  help  in  improving  NMTperformance with low-resource languages?
+
+> Multilingual models can help improve performance of low-resource languages by transferring from high-resource related languages they are trained jointly with. Like knowledge transfer.
+
+
+<br />
+
+# References
+
+- https://github.com/ZacBi/CS224n-2019-solutions/blob/master/assignments/written%20part/a4_solution.md
